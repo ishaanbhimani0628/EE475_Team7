@@ -1,0 +1,6 @@
+# Site Settings
+title: EE475 Team 7 Site
+# description: EE475 Jekyll Website
+
+# Build Settings
+remote_theme: jekyll/minima

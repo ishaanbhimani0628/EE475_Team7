@@ -60,7 +60,7 @@ Bluetooth communication with the app and collar will be worked on together.
 - Sensors
 - Accelerometer
 - Ball tilt switch ($2)
-- Flex Sensor
+- Flex Sensor/Force Sensitive Resistor
 - BTLE for Collar
 - On-board memory for base station
 - Mobile/Web App
@@ -75,7 +75,7 @@ Bluetooth communication with the app and collar will be worked on together.
 - Adafruit Feather nRF52840 - $24.95
 - TI MSP EZ430 - $31.92 
 - Ball tilt switch x2 - $4.00
-- Flex Sensor x2 - $25.50
+- Force Sensitive Resistor x 2 - $39.90
 - HM-10/AT-09 BLE Module x 2 - $10.50
 - Low-power accelerometer x 1 - $16.95
 - Battery connector for collar (AA or coin cell) - TBD based on power scheme

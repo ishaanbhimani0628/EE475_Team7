@@ -5,7 +5,7 @@ title: Project Requirements Document
 
 ## Project Summary
 Our proposed project is a method for tracking the hydration of animals. Dehydration in animals can lead to many health problems. This can be especially costly for livestock. The proposed solution would use sensors for tracking proximity to water sources and orientation of the head, to confirm the animal is drinking.  
-You can find the google doc [here](https://docs.google.com/document/d/1S5zivW_AB6peCOJfSw9JGnZi5F4OPk7b4tQhdf4p1Rw/edit?usp=sharing).
+You can find the evolving document with component links [here](https://docs.google.com/document/d/1S5zivW_AB6peCOJfSw9JGnZi5F4OPk7b4tQhdf4p1Rw/edit?usp=sharing).
 
 ## Deliverables
 - Proximity tracking

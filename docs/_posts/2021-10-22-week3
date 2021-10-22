@@ -1,0 +1,20 @@
+---
+layout: post
+title: Week 3
+---
+
+# Weekly Update 3
+This week, all team members contributed to the project requirements document, which has a standalone page on our website. As part of this, the team selected several components for purchasing. Furthermore, all members started to familiarize themselves with the components that we are using by looking through datasheets.
+
+As the team discovered that the EZ430-f2013 does not have UART, but our bluetooth module requires it, Hafsa and Ishaan explored alternative options for interfacing with bluetooth. This included changing MCUs, changing bluetooth modules, and bit banging/using software UART. The team has decided to pursue a software UART solution as a first option.
+
+Individual contributions are listed below.
+
+Ishaan: Ishaan conducted preliminary parts investigation for non-MCU modules. This included the bluetooth module and accelerometer. He pitched these to the team as a starting point and the team was able to select and confirm these two modules. Specifically, HM-10 bluetooth module was chosen since Ishaan identified it could be put to sleep with AT commands and had a lot of online support. An alternative accelerometer to preliminary parts investigation was chosen as a team.
+During component familiarization, Ishaan identified the missing UART issue for exploration in class session.
+
+Hafsa: Hafsa ordered components that the team confirmed and organized logistics of parts delivery.
+
+Tanpreet: Tanpreet conducted preliminary parts investigation for the flex sensor. And alternative force-sensing resistor was chosen as a team.
+
+Looking forward, we plan to quantify the metrics in our project requirements document and start on development. We expect our accelerometer, MCUs and bluetooth module to be delivered within the week. Our first goal is to confirm functionaltiy with software UART and the bluetooth module, with a reach goal of integrating the accelerometer to the EZ430 via SPI.

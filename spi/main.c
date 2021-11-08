@@ -19,8 +19,8 @@ void readXYZData(int16_t* xdata, int16_t* ydata, int16_t* zdata, int16_t* temp);
 volatile uint16_t read_data = 0;
 volatile int16_t x_data = 0;
 volatile int16_t y_data = 0;
-volatile int16_t z_data = 0;
-volatile int16_t t_data = 0;
+volatile int16_t z_data = 1;
+volatile int16_t t_data = 1;
 
 int main(void)
 {
@@ -129,6 +129,9 @@ void readXYZData(int16_t* xdata, int16_t* ydata, int16_t* zdata, int16_t* temp) 
     while( !(USICTL1 & USIIFG) );
     *xdata = USISR;
 
+    P1OUT |= BIT4;
+    P1OUT &= ~(BIT4); // set CS low
+
     // read y= data
     USISR = 0x0B;
     USICNT = 8;
@@ -140,6 +143,9 @@ void readXYZData(int16_t* xdata, int16_t* ydata, int16_t* zdata, int16_t* temp) 
     USICNT = (USI16B | 16);
     while( !(USICTL1 & USIIFG) );
     *ydata = USISR;
+
+    P1OUT |= BIT4;
+    P1OUT &= ~(BIT4); // set CS low
 
     // read z data
     USISR = 0x0B;
@@ -153,7 +159,10 @@ void readXYZData(int16_t* xdata, int16_t* ydata, int16_t* zdata, int16_t* temp) 
     while( !(USICTL1 & USIIFG) );
     *zdata = USISR;
 
-    // read y data
+    P1OUT |= BIT4;
+    P1OUT &= ~(BIT4); // set CS low
+
+    // read T data
     USISR = 0x0B;
     USICNT = 8;
     while( !(USICTL1 & USIIFG) );

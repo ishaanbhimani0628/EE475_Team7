@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Project Requirements Document
+title: Project Requirements
 ---
 
 ## Project Summary

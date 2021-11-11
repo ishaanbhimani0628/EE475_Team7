@@ -8,7 +8,7 @@ title: Kickstarter
 
 Dehydration is a key health marker for animals, and yet it is not often monitored. This is because it is not easy to physiologically monitor animal hydration. However, dehydration in animals can lead to a number of health problems. Some examples are colic in livestock, urinary calculi in wethered goats and sheep, and kidney failure in dogs. This can be harmful or even devastating for the animals, as well as costly for animal owners.
 
-<center><img src="PrototypeImages/cows_drinking.jpg" alt="cows" width="400"/>
+<center><img src="PrototypeImages/cows_drinking.jpg" alt="cows" width="400"/></center>
 
 
 ## Introducing: WaterBoy!

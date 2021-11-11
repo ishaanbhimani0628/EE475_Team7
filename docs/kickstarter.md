@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Kickstarter
+order: 2
 ---
 
 ## Story

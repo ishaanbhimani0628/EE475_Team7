@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Project Proposal
+order: 4
 ---
 
 ## Summary

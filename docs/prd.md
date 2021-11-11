@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Project Requirements
+order: 3
 ---
 
 ## Project Summary

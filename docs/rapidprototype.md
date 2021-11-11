@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Prototype
+order: 5
 ---
 
 ## Mechanical Design and Sketches

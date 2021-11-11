@@ -7,7 +7,7 @@ title: Kickstarter
 *They say an ounce of prevention is worth a pound of cure. Identify problems linked with dehydration before they turn into disasters, with WaterBoy!*
 
 Dehydration is a key health marker for animals, and yet it is not often monitored. This is because it is not easy to physiologically monitor animal hydration. However, dehydration in animals can lead to a number of health problems. Some examples are colic in livestock, urinary calculi in wethered goats and sheep, and kidney failure in dogs. This can be harmful or even devastating for the animals, as well as costly for animal owners.
-<img src="PrototypeImages/cows_drinking.png" alt="cows" width="400" class="center"/>
+<img src="PrototypeImages/cows_drinking.jpg" alt="cows" width="400" class="center"/>
 
 
 ## Introducing: WaterBoy!

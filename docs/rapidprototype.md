@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Rapid Prototype
+title: Prototype
 ---
 
 ## Mechanical Design and Sketches

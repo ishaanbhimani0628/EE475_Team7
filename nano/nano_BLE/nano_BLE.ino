@@ -90,21 +90,37 @@ void controlPeripheral(BLEDevice peripheral) {
 
   // get custom service characteristic
   if (customService.hasCharacteristic("FFE1")) {
-    //fix this if statement
+    Serial.println("Found custome characteristic\n");
   } else {
     Serial.println("Custom char not found, try another UUID!\n");
     return;
   }
 
-  Serial.println("Custom service characteristic found.\n");
-  BLECharacteristic customChar = customService.characteristic("FFE1");
-  char buff[21];
-  buff[20] = '\0';
-  while(1) {
-  customChar.readValue(buff,20);
-  Serial.print("customChar value = ");
-  Serial.println(buff);
-  Serial.println("\n");
+  BLECharacteristic customChar = peripheral.characteristic("FFE1");
+  // retrieve the simple key characteristic
+
+  // subscribe to the simple key characteristic
+  Serial.println("Subscribing to simple key characteristic ...");
+  if (!customChar) {
+    Serial.println("no custome characteristic found!");
+    peripheral.disconnect();
+    return;
+  } else if (!customChar.canSubscribe()) {
+    Serial.println("custom characteristic is not subscribable!");
+    peripheral.disconnect();
+    return;
+  } else if (!customChar.subscribe()) {
+    Serial.println("subscription failed!");
+    peripheral.disconnect();
+    return;
   }
 
- }
+  while (peripheral.connected()) {
+    if (customChar.valueUpdated()) {
+      byte buff;
+      customChar.readValue(buff);
+      Serial.print("Notified read request: ");
+      Serial.println(buff);
+    }
+  }
+}

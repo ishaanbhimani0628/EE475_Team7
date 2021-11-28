@@ -121,6 +121,8 @@ void controlPeripheral(BLEDevice peripheral) {
       customChar.readValue(buff);
       Serial.print("Notified read request: ");
       Serial.println(buff);
+      Serial.print("RSSI = ");
+      Serial.println(peripheral.rssi());
     }
   }
 }

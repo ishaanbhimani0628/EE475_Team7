@@ -1,12 +1,23 @@
 #include <Arduino.h>
 #include <ArduinoBLE.h>
+//TODO: moving average for readings and RSSI
 
+int movingAvg(int *ptrArrNumbers, int *ptrSum, int pos, int len, int nextNum);
 void connectToPeripheral();
 void controlPeripheral(BLEDevice peripheral);
+void waitForConnection();
+void updateDataLevel();
 
 const char* deviceServiceUuid = "0000FFE0-0000-1000-8000-00805F9B34FB";
 const char* device_Name = "DSD TECH";
 const char* deviceCustomServiceChar = "0000FFE1-0000-1000-8000-00805F9B34FB";
+
+// Service info for connecting to phone
+unsigned long total_time = 0;  // test data to send to phone
+unsigned long previousMillis = 0;  // last time the battery level was checked, in ms
+BLEService dataService("1101");
+BLEUnsignedCharCharacteristic dataChar("2101",  // standard 16-bit characteristic UUID
+    BLERead | BLENotify); // remote clients will be able to get notifications if this characteristic changes
 
 void setup() {
   Serial.begin(9600);
@@ -19,110 +30,21 @@ void setup() {
     while(1); // just hang if cannot start BLE
   }
 
-  BLE.setLocalName("Nano 33 BLE Central");
+  BLE.setLocalName("Nano 33 BLE"); 
+
+  // set characteristic info for connecting to phone
+  BLE.setAdvertisedService(dataService); // add the service UUID
+  dataService.addCharacteristic(dataChar); // add the battery level characteristic
+  BLE.addService(dataService); // Add the battery service
+  dataChar.writeValue(total_time); // set initial value for this characteristic
+  
   BLE.advertise(); // advertise self
   Serial.println("Arduino Nano 33 BLE Sense (Central Device)");
   Serial.println(" ");
 }
 
 void loop() {
-  delay(10000); //wait 10 seconds to I can connect to COM
+  delay(10000); //wait 10 seconds so I can connect to COM
   connectToPeripheral();
-}
-
-void connectToPeripheral() {
-  BLEDevice peripheral;
-  
-  Serial.println("- Discovering peripheral device...");
-
-  do
-  {
-   // BLE.scanForUuid(deviceServiceUuid);
-    BLE.scanForName(device_Name);
-    peripheral = BLE.available();
-  } while (!peripheral);
-  
-  if (peripheral) {
-    Serial.println("* Peripheral device found!");
-    Serial.print("* Device MAC address: ");
-    Serial.println(peripheral.address());
-    Serial.print("* Device name: ");
-    Serial.println(peripheral.localName());
-    Serial.print("* Advertised service UUID: ");
-    Serial.println(peripheral.advertisedServiceUuid());
-    Serial.println(" ");
-    BLE.stopScan();
-    controlPeripheral(peripheral);
-  }
-  
-}
-
-void controlPeripheral(BLEDevice peripheral) {
-  Serial.println("- Connecting to peripheral device...");
-
-  if (peripheral.connect()) {
-    Serial.println("* Connected to peripheral device!");
-    Serial.println(" ");
-  } else {
-    Serial.println("* Connection to peripheral device failed!");
-    Serial.println(" ");
-    return;
-  }
-
-  Serial.println("- Discovering peripheral device attributes...");
-  if (peripheral.discoverAttributes()) {
-    Serial.println("* Peripheral device attributes discovered!");
-    Serial.println(" ");
-  } else {
-    Serial.println("* Peripheral device attributes discovery failed!");
-    Serial.println(" ");
-    peripheral.disconnect();
-    return;
-  }
-
-  // connect to Custom Service
-  BLEService customService = peripheral.service("FFE0");
-  if (customService) {
-    Serial.println("Custom service discovered!\n");
-  } else {
-    Serial.println("try another UUID\n");
-  }
-
-  // get custom service characteristic
-  if (customService.hasCharacteristic("FFE1")) {
-    Serial.println("Found custome characteristic\n");
-  } else {
-    Serial.println("Custom char not found, try another UUID!\n");
-    return;
-  }
-
-  BLECharacteristic customChar = peripheral.characteristic("FFE1");
-  // retrieve the simple key characteristic
-
-  // subscribe to the simple key characteristic
-  Serial.println("Subscribing to simple key characteristic ...");
-  if (!customChar) {
-    Serial.println("no custome characteristic found!");
-    peripheral.disconnect();
-    return;
-  } else if (!customChar.canSubscribe()) {
-    Serial.println("custom characteristic is not subscribable!");
-    peripheral.disconnect();
-    return;
-  } else if (!customChar.subscribe()) {
-    Serial.println("subscription failed!");
-    peripheral.disconnect();
-    return;
-  }
-
-  while (peripheral.connected()) {
-    if (customChar.valueUpdated()) {
-      byte buff;
-      customChar.readValue(buff);
-      Serial.print("Notified read request: ");
-      Serial.println(buff);
-      Serial.print("RSSI = ");
-      Serial.println(peripheral.rssi());
-    }
-  }
+  waitForConnection();
 }

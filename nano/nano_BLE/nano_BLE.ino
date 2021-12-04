@@ -2,7 +2,7 @@
 #include <ArduinoBLE.h>
 //TODO: moving average for readings and RSSI
 
-int movingAvg(int *ptrArrNumbers, int *ptrSum, int pos, int len, int nextNum);
+float movingAvg(int *ptrArrNumbers, int *ptrSum, int pos, int len, int nextNum);
 void connectToPeripheral();
 void controlPeripheral(BLEDevice peripheral);
 void waitForConnection();

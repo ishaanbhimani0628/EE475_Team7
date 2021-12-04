@@ -1,11 +1,11 @@
-int movingAvg(int *ptrArrNumbers, int *ptrSum, int pos, int len, int nextNum)
+float movingAvg(int *ptrArrNumbers, int *ptrSum, int pos, int len, int nextNum)
 {
   //Subtract the oldest number from the prev sum, add the new number
   *ptrSum = *ptrSum - ptrArrNumbers[pos] + nextNum;
   //Assign the nextNum to the position in the array
   ptrArrNumbers[pos] = nextNum;
   //return the average
-  return *ptrSum / len;
+  return (float)*ptrSum / (float)len;
 }
 
 void controlPeripheral(BLEDevice peripheral) {
@@ -76,8 +76,8 @@ void controlPeripheral(BLEDevice peripheral) {
     return;
   }
 
-  int RSSI_avg = 0;
-  int orient_avg = 0;
+  float RSSI_avg = 0;
+  float orient_avg = 0;
   int pos = 0;
   int RSSI_sum = 0;
   int orient_sum = 0;

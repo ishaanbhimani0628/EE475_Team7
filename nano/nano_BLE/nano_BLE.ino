@@ -15,9 +15,10 @@ const char* deviceCustomServiceChar = "0000FFE1-0000-1000-8000-00805F9B34FB";
 // Service info for connecting to phone
 unsigned long total_time = 0;  // test data to send to phone
 unsigned long previousMillis = 0;  // last time the battery level was checked, in ms
+int connectNum = 0;
 BLEService dataService("1101");
-BLEUnsignedCharCharacteristic dataChar("2101",  // standard 16-bit characteristic UUID
-    BLERead | BLENotify); // remote clients will be able to get notifications if this characteristic changes
+BLECharacteristic dataChar("2101",  // standard 16-bit characteristic UUID
+    BLERead | BLENotify, 10); // remote clients will be able to get notifications if this characteristic changes
 
 void setup() {
   Serial.begin(9600);

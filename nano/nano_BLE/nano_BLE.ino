@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <ArduinoBLE.h>
-//TODO: moving average for readings and RSSI
 
 float movingAvg(int *ptrArrNumbers, int *ptrSum, int pos, int len, int nextNum);
 void connectToPeripheral();
@@ -14,6 +13,7 @@ const char* deviceCustomServiceChar = "0000FFE1-0000-1000-8000-00805F9B34FB";
 
 // Service info for connecting to phone
 unsigned long total_time = 0;  // test data to send to phone
+unsigned long total_time_prev = -1;
 unsigned long previousMillis = 0;  // last time the battery level was checked, in ms
 int connectNum = 0;
 BLEService dataService("1101");
@@ -40,7 +40,7 @@ void setup() {
   dataChar.writeValue(total_time); // set initial value for this characteristic
   
   BLE.advertise(); // advertise self
-  Serial.println("Arduino Nano 33 BLE Sense (Central Device)");
+  Serial.println("Advertising as Nano 33 BLE)");
   Serial.println(" ");
 }
 

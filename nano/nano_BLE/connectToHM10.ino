@@ -11,29 +11,30 @@ float movingAvg(int *ptrArrNumbers, int *ptrSum, int pos, int len, int nextNum)
 void controlPeripheral(BLEDevice peripheral) {
   int RSSI_buf[10] = {0};
   int orientation_buf[10] = {0};
-  Serial.println("- Connecting to peripheral device...");
+  Serial.println("Connecting to Collar");
 
   if (peripheral.connect()) {
-    Serial.println("* Connected to peripheral device!");
+    Serial.println("Connected to Collar!");
     Serial.println(" ");
   } else {
-    Serial.println("* Connection to peripheral device failed!");
+    Serial.println("Failed to connect to collar");
     Serial.println(" ");
     return;
   }
 
   int retries = 0;
-  Serial.println("- Discovering peripheral device attributes...");
+  //Serial.println("- Discovering peripheral device attributes...");
     while(retries < 6) {
     if (peripheral.discoverAttributes()) {
-      Serial.println("* Peripheral device attributes discovered!");
-      Serial.println(" ");
+      //Serial.println("* Peripheral device attributes discovered!");
+      //Serial.println(" ");
       break;
     } else {
-      Serial.println("* Peripheral device attributes discovery failed!");
-      Serial.println(" ");
+
       retries ++;
       if (retries > 5) {
+        Serial.println("* Peripheral device attributes discovery failed!");
+        Serial.println(" ");
         peripheral.disconnect();
         return;
       }
@@ -44,16 +45,16 @@ void controlPeripheral(BLEDevice peripheral) {
   // connect to Custom Service
   BLEService customService = peripheral.service("FFE0");
   if (customService) {
-    Serial.println("Custom service discovered!\n");
+    //Serial.println("Custom service discovered!\n");
   } else {
-    Serial.println("try another UUID\n");
+    Serial.println("Custom Service not discovered\n");
   }
 
   // get custom service characteristic
   if (customService.hasCharacteristic("FFE1")) {
-    Serial.println("Found custom characteristic\n");
+    //Serial.println("Found custom characteristic\n");
   } else {
-    Serial.println("Custom char not found, try another UUID!\n");
+    Serial.println("Custom characteristic not found, try another UUID!\n");
     return;
   }
 
@@ -61,9 +62,9 @@ void controlPeripheral(BLEDevice peripheral) {
   // retrieve the simple key characteristic
 
   // subscribe to the simple key characteristic
-  Serial.println("Subscribing to simple key characteristic ...");
+  //Serial.println("Subscribing to simple key characteristic ...");
   if (!customChar) {
-    Serial.println("no custome characteristic found!");
+    Serial.println("no custom characteristic found!");
     peripheral.disconnect();
     return;
   } else if (!customChar.canSubscribe()) {
@@ -88,11 +89,11 @@ void controlPeripheral(BLEDevice peripheral) {
     if (customChar.valueUpdated()) {
       byte buff;
       customChar.readValue(buff);
-      Serial.print("Notified read request: ");
-      Serial.println((char)buff);
+      //Serial.print("Notified read request: ");
+      //Serial.println((char)buff);
       int p_rssi = peripheral.rssi() * -1;
-      Serial.print("RSSI = ");
-      Serial.println(p_rssi);
+      //Serial.print("RSSI = ");
+      //Serial.println(p_rssi);
 
       //implement averaging
       RSSI_avg = movingAvg(RSSI_buf, &RSSI_sum, pos, len, p_rssi);
@@ -101,13 +102,13 @@ void controlPeripheral(BLEDevice peripheral) {
       if (pos >= len) {
         pos = 0;
       }
-      Serial.print("RSSI Avg:");
-      Serial.println(RSSI_avg);
-      Serial.print("Orientation Avg:");
-      Serial.println(orient_avg);
+      //Serial.print("RSSI Avg:");
+      //Serial.println(RSSI_avg);
+      //Serial.print("Orientation Avg:");
+      //Serial.println(orient_avg);
 
       if (orient_avg > 0.5 && RSSI_avg < 50) {
-          Serial.println("Drinking!");
+          Serial.println("Collar in drinking state!");
           if (drink_start == 0) {
             drink_start = millis();
           } else {
@@ -118,7 +119,7 @@ void controlPeripheral(BLEDevice peripheral) {
         total_time += drink_time;
         drink_curr = 0;
         drink_start = 0;
-        Serial.println("Not Drinking");
+        Serial.println("Collar not  in drinking state");
       }
       
       if (RSSI_avg > 80) {
@@ -132,7 +133,7 @@ void controlPeripheral(BLEDevice peripheral) {
 void connectToPeripheral() {
   BLEDevice peripheral;
   
-  Serial.println("- Discovering peripheral device...");
+  Serial.println("Searching for Collar...");
   int waitTime = millis();
   do
   {
@@ -142,13 +143,13 @@ void connectToPeripheral() {
   } while (!peripheral && (millis() - waitTime < 5000)); //only wait max 5s
   
   if (peripheral) {
-    Serial.println("* Peripheral device found!");
-    Serial.print("* Device MAC address: ");
-    Serial.println(peripheral.address());
+    Serial.println("Collar Identified:");
+    //Serial.print("* Device MAC address: ");
+    //Serial.println(peripheral.address());
     Serial.print("* Device name: ");
     Serial.println(peripheral.localName());
-    Serial.print("* Advertised service UUID: ");
-    Serial.println(peripheral.advertisedServiceUuid());
+    //Serial.print("* Advertised service UUID: ");
+    //Serial.println(peripheral.advertisedServiceUuid());
     Serial.println(" ");
     BLE.stopScan();
     controlPeripheral(peripheral);

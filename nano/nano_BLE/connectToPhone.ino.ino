@@ -4,30 +4,33 @@ void updateDataLevel() {
   */
   Serial.print("Sending Data: ");
   unsigned long dummy = 42069 + connectNum;
-  Serial.println(dummy);
-  String dummy_string = String(dummy);
-  int str_len = dummy_string.length();
-  byte dummy_arr[str_len];
-  const char* dummy_c_str = dummy_string.c_str();
-  for(int i = 0; i < str_len; i++){
-    dummy_arr[i] = dummy_c_str[i];
+  //Serial.println(dummy);
+  //String dummy_string = String(dummy);
+  //int str_len = dummy_string.length();
+  if (total_time != total_time_prev) {
+    String data_str = String(total_time);
+    byte data_arr[str_len];
+    const char* data_c_str = data_str.c_str();
+    for(int i = 0; i < str_len; i++){
+      data_arr[i] = data_c_str[i];
+    }
+    dataChar.writeValue(data_arr, str_len);  // and update the battery level characteristic
+    total_time_prev = total_time;
   }
-  dataChar.writeValue(dummy_arr, str_len);  // and update the battery level characteristic
-  connectNum++;
 }
 
 void waitForConnection() {
   int updated = 0;
   int waitTime = millis();
-  Serial.println("Bluetooth device active, waiting for connections...");// wait for a BLE central
+  Serial.println("Waiting for phone to connect");// wait for a BLE central
   while (millis() - waitTime < 30000) { //wait a maximum of 30 seconds.
     BLEDevice central = BLE.central();
     // if a central is connected to the peripheral:
     if (central) {
-      Serial.print("Connected to central: ");
+      Serial.print("Connected to phone: ");
       //connectNum++;
       // print the central's BT address:
-      Serial.println(central.address());
+      //Serial.println(central.address());
       // turn on the LED to indicate the connection:
       //digitalWrite(LED_BUILTIN, HIGH);
   
@@ -42,8 +45,8 @@ void waitForConnection() {
       }
       // when the central disconnects, turn off the LED:
       //digitalWrite(LED_BUILTIN, LOW);
-      Serial.print("Disconnected from central: ");
-      Serial.println(central.address());
+      Serial.print("Disconnected from phone: ");
+      //Serial.println(central.address());
     }
   }
 }

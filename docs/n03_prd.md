@@ -46,7 +46,7 @@ App:
 App development will be managed by Tanpreet. 
 
 Collar:
-Collar development will be managed by Hafsa. 
+Collar development will be managed by Hafsa.
 
 Base Station:
 Base station development will be managed by Ishaan. 
@@ -59,8 +59,7 @@ Base station development will be managed by Ishaan.
 - BTLE for Collar
 - Mobile/Web App
 - Power
-- Batteries 
-- AA for collar
+- AA Batteries for collar
 
 
 ## Budget

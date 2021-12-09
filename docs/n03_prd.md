@@ -15,8 +15,8 @@ You can find the evolving document with component links [here](https://docs.goog
 - Tested and demoed with real animals 
 
 ## Critical Features
-- Low power collar
-- Tracks each collar: time spent drinking (with head bowed) at water station
+- Low power collar tracks head orientation
+- Base station tracks each collar: time spent drinking (with head bowed) at water station
 - Bluetooth communication with mobile app
 
 ## Performance Metrics
@@ -67,6 +67,8 @@ Base station development will be managed by Ishaan.
 - TI MSP EZ430 - $31.92 
 - HM-10/AT-09 BLE Module x 2 - $10.50
 - Low-power accelerometer x 1 - $16.95
+- PCB for collar x 1 - $30.00
+- Power circuit components for collar - $25.00
 
 ## Risks
 - Unable to determine distance over BLE

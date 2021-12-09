@@ -46,7 +46,7 @@ App:
 App development will be managed by Tanpreet. 
 
 Collar:
-Collar development will be managed by Hafsa.
+Collar development will be managed by Hafsa. Some work (SPI developement and PCB design will be shared between Hafsa and Ishaan).
 
 Base Station:
 Base station development will be managed by Ishaan. 

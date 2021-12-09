@@ -102,12 +102,12 @@ void controlPeripheral(BLEDevice peripheral) {
       if (pos >= len) {
         pos = 0;
       }
-      //Serial.print("RSSI Avg:");
-      //Serial.println(RSSI_avg);
-      //Serial.print("Orientation Avg:");
-      //Serial.println(orient_avg);
+      Serial.print("RSSI Avg:");
+      Serial.println(RSSI_avg);
+      Serial.print("Orientation Avg:");
+      Serial.println(orient_avg);
 
-      if (orient_avg > 0.5 && RSSI_avg < 50) {
+      if (orient_avg > 0.3 && RSSI_avg < 50) {
           Serial.println("Collar in drinking state!");
           if (drink_start == 0) {
             drink_start = millis();

@@ -10,21 +10,19 @@ You can find the evolving document with component links [here](https://docs.goog
 ## Deliverables
 - Proximity tracking
 - Orientation sensor tracking
-- Neck size sensor tracking
 - Communication to app
 - Tested and demoed without animals
 - Tested and demoed with real animals 
 
 ## Critical Features
 - Low power collar
-- Solar charged base station
 - Tracks each collar: time spent drinking (with head bowed) at water station
 - Bluetooth communication with mobile app
 
 ## Performance Metrics
 - Measuring success and speed of bluetooth connection of collar and base station when animal collar is within range/near the water source
 - Time animal has actually spent drinking water vs time calculated 
-- Head tilt- success rate of ball tilt sensor being triggered when the animal is drinking water
+- Head tilt- success rate of accelerometer readings when the animal is drinking water
 
 ## Milestones
 1. Establish bluetooth communication between MSP EZ430 with BLE module and Adafruit Feather nRF52840
@@ -45,42 +43,31 @@ Website:
 Weekly updates by each team member regarding what they worked on that week. Assignments that are posted to the website will be completed together.
 
 App:
-App development will be split amongst team members. 
+App development will be managed by Tanpreet. 
 
 Collar:
-Bluetooth integration with the collar will be completed together. Each team member will complete one of accelerometer, ball tilt switch, and flex sensor integration with the collar. 
+Collar development will be managed by Hafsa. 
 
 Base Station:
-Bluetooth communication with the app and collar will be worked on together. 
+Base station development will be managed by Ishaan. 
 
 ## Materials & Outside Help Needed
 - Microcontrollers
 - Adafruit Feather nRF52840 (Base station)
 - TI MSP EZ430 (Collar)
-- Sensors
 - Accelerometer
-- Ball tilt switch ($2)
-- Flex Sensor/Force Sensitive Resistor
 - BTLE for Collar
-- On-board memory for base station
 - Mobile/Web App
 - Power
-- Solar panel
 - Batteries 
-- Coin cell or AA for collar
-- Rechargable (lithium-ion batteries) for base station
+- AA for collar
 
 
 ## Budget
 - Adafruit Feather nRF52840 - $24.95
 - TI MSP EZ430 - $31.92 
-- Ball tilt switch x2 - $4.00
-- Force Sensitive Resistor x 2 - $39.90
 - HM-10/AT-09 BLE Module x 2 - $10.50
 - Low-power accelerometer x 1 - $16.95
-- Battery connector for collar (AA or coin cell) - TBD based on power scheme
-- Solar Panel - TBD based on power scheme
-- Additional storage for Adafruit Feather - TBD based on memory scheme
 
 ## Risks
 - Unable to determine distance over BLE

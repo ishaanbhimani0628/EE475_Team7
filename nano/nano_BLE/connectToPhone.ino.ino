@@ -3,20 +3,17 @@ void updateDataLevel() {
      This is used here to simulate the charge level of a battery.
   */
   Serial.print("Sending Data: ");
-  unsigned long dummy = 42069 + connectNum;
   //Serial.println(dummy);
-  //String dummy_string = String(dummy);
-  //int str_len = dummy_string.length();
-  if (total_time != total_time_prev) {
-    String data_str = String(total_time);
-    byte data_arr[str_len];
-    const char* data_c_str = data_str.c_str();
-    for(int i = 0; i < str_len; i++){
-      data_arr[i] = data_c_str[i];
-    }
-    dataChar.writeValue(data_arr, str_len);  // and update the battery level characteristic
-    total_time_prev = total_time;
+  String data_str = String(total_time/1000);
+  int str_len = data_str.length();
+  byte data_arr[str_len];
+  const char* data_c_str = data_str.c_str();
+  for(int i = 0; i < str_len; i++){
+    data_arr[i] = data_c_str[i];
   }
+  dataChar.writeValue(data_arr, str_len);  // and update the battery level characteristic
+  total_time_prev = total_time;
+  Serial.println(data_c_str);
 }
 
 void waitForConnection() {

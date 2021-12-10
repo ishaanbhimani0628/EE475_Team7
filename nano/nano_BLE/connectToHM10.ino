@@ -111,6 +111,7 @@ void controlPeripheral(BLEDevice peripheral) {
           Serial.println("Collar in drinking state!");
           if (drink_start == 0) {
             drink_start = millis();
+            drink_curr = millis();
           } else {
             drink_curr = millis();
           }

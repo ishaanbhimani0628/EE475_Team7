@@ -7,4 +7,4 @@ title: Final Project
 [Slides](https://docs.google.com/presentation/d/1JVAlZgg09IckltNHAFeh8YnkyRZR7CsNUivWBfxocCU/edit?usp=sharing)
 
 ## WaterBoy App
-[Download apk](waterboy_app/app.apk)
+[App link](https://github.com/ishaanbhimani0628/EE475_Team7/tree/main/waterboy_app)

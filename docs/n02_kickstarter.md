@@ -12,7 +12,7 @@ Dehydration is a key health marker for animals, and yet it is not often monitore
 
 
 ## Introducing: WaterBoy!
-Our proposed solution is WaterBoy, the animal hydration tracker. WaterBoy is a system that is able to track the amount of time each of your animals has spent drinking water each day. It consists of two devices, a collar that goes on each animal and a base station at the water trough through which you can sync the data for each animal to your phone via bluetooth. The data can then be viewed inside the WaterBoy app to quickly view your animal's drinking activity, including any abnormalities in their behavior.\
+Our proposed solution is WaterBoy, the animal hydration tracker. WaterBoy is a system that is able to track the amount of time each of your animals has spent drinking water each day. It consists of two devices, a collar that goes on each animal and a base station at the water trough through which you can sync the data for each animal to your phone via bluetooth. The data can then be viewed inside the WaterBoy app to quickly view your animal's drinking activity, including any abnormalities in their behavior. The video [here](https://drive.google.com/file/d/1kDkgs9loUsWhVxI-bmLd2Ey3DoWfOpFU/view?usp=sharing) demonstrates WaterBoy in action! 
 
 Below is an overview of the WaterBoy system:
 ![Proposed Design](PrototypeImages/waterboy_system.png)
@@ -29,13 +29,14 @@ Our solution provides a low cost solution for monitoring your animal’s water i
 
 
 ## Features and Specifications
-- 1+ month collar battery life
-- Base station compatible with solar charging
+- Up to 2 weeks collar battery life
 - Collar tracks time each animal has spent drinking at water station and sends to base station via bluetooth
+- Base Station calculates distance of animal from water station to see if they are within drinking range
 - Data transfer from base station to mobile app via bluetooth
-- Can track multiple animals drinking water at a time
-- Summary of each animal’s hydration level
-- SD card for base station data gathering
+- Summary of each animal’s hydration level available on app
+
+![Collar](PrototypeImages/Collar.png)
+![Collar](PrototypeImages/Collar_PCB.png)
 
 ## Risks
 Technical risks of the project include estimating distance from the base station via bluetooth signal strength and power consumption of the collar and base station. However, our technical team is working to mitigate these risks using standard practices for determining bluetooth signal strength, such as RSSI, and by designing the collar for low power applications.

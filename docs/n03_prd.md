@@ -12,7 +12,6 @@ You can find the evolving document with component links [here](https://docs.goog
 - Orientation sensor tracking
 - Communication to app
 - Tested and demoed without animals
-- Tested and demoed with real animals 
 
 ## Critical Features
 - Low power collar tracks head orientation

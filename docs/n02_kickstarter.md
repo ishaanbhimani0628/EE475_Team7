@@ -19,7 +19,7 @@ Below is an overview of the WaterBoy system:
 
 
 Users will be able to pull data from the base station on the water supply to our mobile app! You can see the mobile app interface below, where you can view the water drinking activity of each of you animals.
-![App Mockup 1](PrototypeImages/app_mockup1.png)
+![App Mockup](PrototypeImages/final-app.png)
 
 
 ## How Will WaterBoy Help?

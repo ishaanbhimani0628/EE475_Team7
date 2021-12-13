@@ -29,7 +29,7 @@ Our solution provides a low cost solution for monitoring your animal’s water i
 
 
 ## Features and Specifications
-- Up to 4 days collar battery life
+- Minimum 2 days collar battery life
 - Collar tracks time each animal has spent drinking at water station and sends to base station via bluetooth
 - Base Station calculates distance of animal from water station to see if they are within drinking range
 - Data transfer from base station to mobile app via bluetooth

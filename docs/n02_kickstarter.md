@@ -35,8 +35,8 @@ Our solution provides a low cost solution for monitoring your animal’s water i
 - Data transfer from base station to mobile app via bluetooth
 - Summary of each animal’s hydration level available on app
 
-<img src="TeamImages/Collar.png" alt="collar" width="200"/>
-<img src="TeamImages/Collar_PCB.png" alt="collar" width="200"/>
+<img src="PrototypeImages/Collar.png" alt="collar" width="200"/>
+<img src="PrototypeImages/Collar_PCB.png" alt="collar" width="200"/>
 
 ## Risks
 Technical risks of the project include estimating distance from the base station via bluetooth signal strength and power consumption of the collar and base station. However, our technical team is working to mitigate these risks using standard practices for determining bluetooth signal strength, such as RSSI, and by designing the collar for low power applications.
